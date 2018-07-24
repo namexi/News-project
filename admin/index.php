@@ -1,3 +1,11 @@
+<?php
+
+if (empty($_SESSION['logon_cred'])){
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
