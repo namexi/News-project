@@ -21,12 +21,39 @@ function login(){
  
     //TODO: 连接数据库校验用户名与密码
 
+    $conn = mysqli_connect(DB_HOST,DB_USER,DB_PWD,DB_NAME);
+
+    if (!$conn){
+        #连接数据库失败
+        exit('<h1>连接失败</h1>');
+    }
+
+    mysqli_set_charset($conn,'utf8');
+
+    $query = mysqli_query($conn,"select * from users where email= '{$email}' limit 1;");
+
+    if (!$query){
+        # 查询用户名失败
+        $imasge = '登陆失败，请重试';
+        return;
+    }
+
+    $user = mysqli_fetch_assoc($query);
+
+    if (!$user){
+        $imasge = '用户名不存在';
+        return;
+    }
+
+    if ($pwd !== $user['password']){
+        $imasge = '密码有误';
+        return;
+    }
 
 //-----------------登陆成功------------------------
 
     //TODO: 设置访问控制
-
-  
+    
 
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
