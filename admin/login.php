@@ -53,7 +53,12 @@ function login(){
 //-----------------登陆成功------------------------
 
     //TODO: 设置访问控制
-    
+
+    //登陆成功 跳转页面
+    header('Location: index.php');
+    //利用session 记住登陆状态并传递数据
+    session_start();
+    $_SESSION['logon_cred'] = $user;
 
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
