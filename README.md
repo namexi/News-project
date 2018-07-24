@@ -1,1 +1,3 @@
-# News-project
+# Dynamic web page project
+
+Continuous update
